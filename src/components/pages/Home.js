@@ -27,7 +27,7 @@ const imagensCarrosel = [
 const headerMenu = [
   { id: 1, nome: "Serviços", slang: "servicos" },
   { id: 2, nome: "Contato", slang: "contato" },
-  { id: 3, nome: "Entrar", slang: "entrar" },
+  { id: 3, nome: "Entrar", slang: "login" },
 ];
 
 const Home = () => (

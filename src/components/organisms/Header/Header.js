@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import Grid from "components/atoms/grid/Grid";
 import { breakAt, BreakpointsSizes } from "styles/breakpoints/Breakpoints";
+import Button from "components/atoms/button/Button";
 
 const LogoContainer = styled.div`
   text-align: center;
@@ -36,18 +39,23 @@ const Menu = styled.div`
   justify-content: center;
   width: auto;
   font-size: 15px;
-  /* margin: 0 5%; */
-
+  text-decoration: none;
+  color: black;
   font-weight: bold;
+  /* background-color: red; */
 `;
 
 const Header = ({ logo, opcoes }) => (
   <Root>
     <Grid md={4} sm={2}>
-      <LogoContainer>{logo}</LogoContainer>
+      <LogoContainer as={Link} to="/">
+        {logo}
+      </LogoContainer>
       {opcoes.map((opcao) => (
         <Menu key={opcao.id}>
-          <p>{opcao.nome}</p>
+          <Button variant="linkBlack" as={Link} to={opcao.slang}>
+            {opcao.nome}
+          </Button>
         </Menu>
       ))}
     </Grid>

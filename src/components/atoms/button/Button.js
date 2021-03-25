@@ -5,12 +5,14 @@ export const ButtonColors = {
   default: "default",
   primary: "primary",
   danger: "danger",
+  linkBlack: "linkBlack",
 };
 
 export const ButtonsVariants = {
   default: "default",
   outlined: "outlined",
   link: "link",
+  linkBlack: "linkBlack",
 };
 
 const getMainColor = ({ theme, color }) => {
@@ -113,12 +115,29 @@ const ButtonLink = styled(Button)`
   }
 `;
 
+const ButtonLinkBlack = styled(Button)`
+  background-color: transparent;
+  border-color: transparent;
+  color: black;
+  padding-left: 0;
+  padding-right: 0;
+
+  /* &:hover:enabled */
+  &:hover:not(:disabled) {
+    background-color: transparent;
+    border-color: transparent;
+    color: ${getDarkColor};
+  }
+`;
+
 const ButtonWrapper = (props) => {
   switch (props.variant) {
     case ButtonsVariants.outlined:
       return <ButtonOutLined {...props} />;
     case ButtonsVariants.link:
       return <ButtonLink {...props} />;
+    case ButtonsVariants.linkBlack:
+      return <ButtonLinkBlack {...props} />;
     default:
       return <Button {...props} />;
   }
