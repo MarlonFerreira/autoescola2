@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
 import styled from "styled-components";
@@ -69,6 +69,12 @@ const Registro = () => {
 
   const [redirect, setRedirect] = useState(false);
 
+  useEffect(() => {
+    const nome = sessionStorage.getItem("nome");
+
+    if (nome) setRedirect(true);
+  }, []);
+
   async function handleChange(event) {
     const { name, value } = event.target;
     setDados({ ...dados, [name]: value });
@@ -100,6 +106,7 @@ const Registro = () => {
 
   return (
     <>
+      {redirect && <Redirect to="/login" />}
       {estado === "Criado com sucesso." && (
         <Modal display="true">
           <ModalContent>
@@ -144,7 +151,6 @@ const Registro = () => {
           </div>
         </form>
       </Root>
-      {redirect && <Redirect to="/login" />}
     </>
   );
 };
