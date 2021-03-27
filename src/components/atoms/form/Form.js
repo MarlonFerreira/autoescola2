@@ -43,6 +43,18 @@ const Root = styled.div`
   }
 `;
 
+export const MsgInputCheck = styled.div`
+  color: red;
+`;
+
+export const Aviso = styled.div`
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: red;
+  font-size: 0.8rem;
+`;
+
 export const Title = styled.p`
   font-weight: bold;
   text-align: center;

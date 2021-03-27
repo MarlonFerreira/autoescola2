@@ -3,21 +3,14 @@ import { Redirect } from "react-router-dom";
 
 import styled from "styled-components";
 import Button from "components/atoms/button/Button";
-import Root, { Title, Campo } from "components/atoms/form/CardForm";
+import Root, {
+  Title,
+  Campo,
+  Aviso,
+  MsgInputCheck,
+} from "components/atoms/form/Form";
 
 import { ajaxPostJson } from "../../../utils/ajax";
-
-const Aviso = styled.div`
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  color: red;
-  font-size: 0.8rem;
-`;
-
-const MsgInputCheck = styled.div`
-  color: red;
-`;
 
 const Modal = styled.div`
   display: ${(props) => props.display}; /* Hidden by default */
@@ -72,7 +65,7 @@ function initialState() {
 const Registro = () => {
   const [dados, setDados] = useState(initialState);
   const [ativo, setAtivo] = useState(false);
-  const [status, setStatus] = useState();
+  const [estado, setEstado] = useState();
 
   const [redirect, setRedirect] = useState(false);
 
@@ -90,16 +83,16 @@ const Registro = () => {
     await ajaxPostJson("http://localhost:8082/cliente", dados).then(
       (result) => {
         if (result.status === 201) {
-          setStatus("Criado com sucesso.");
+          setEstado("Criado com sucesso.");
           setTimeout(function () {
             setRedirect(true);
           }, 1000);
         } else if (result.status === 422) {
-          setStatus("Email já cadastrado.");
+          setEstado("Email já cadastrado.");
         } else if (result.status === 400) {
-          setStatus("Preencha os dados corretamente.");
+          setEstado("Preencha os dados corretamente.");
         } else {
-          setStatus("Serviço indisponível.");
+          setEstado("Serviço indisponível.");
         }
       }
     );
@@ -107,7 +100,7 @@ const Registro = () => {
 
   return (
     <>
-      {status === "Criado com sucesso." && (
+      {estado === "Criado com sucesso." && (
         <Modal display="true">
           <ModalContent>
             <Modalheader></Modalheader>
@@ -116,7 +109,7 @@ const Registro = () => {
           </ModalContent>
         </Modal>
       )}
-      {status && <Aviso>{status}</Aviso>}
+      {estado && <Aviso>{estado}</Aviso>}
       <Root>
         <form>
           <Title>Preencha os seus dados</Title>
@@ -131,7 +124,7 @@ const Registro = () => {
             <Campo>E-mail</Campo>
             <input type="text" name="email" onChange={handleChange} />
           </label>
-          {ativo && status === "Email já cadastrado." && (
+          {ativo && estado === "Email já cadastrado." && (
             <MsgInputCheck>Email já cadastrado.</MsgInputCheck>
           )}
           {ativo && !dados.email && (

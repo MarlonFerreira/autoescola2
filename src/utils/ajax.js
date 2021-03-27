@@ -16,6 +16,7 @@ export const ajaxGetJson = (URL, dados) => {
   return fetch(URL, {
     mode: "cors",
     method: "GET",
+    credentials: "include",
     headers: {
       ...dados,
       "Content-Type": "application/json",
