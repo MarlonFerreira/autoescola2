@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 
 import isConnected from "./isConnected";
 
-const CheckForHome = ({ component: Component, ...rest }) => (
+const Logged = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={(props) =>
@@ -16,4 +16,4 @@ const CheckForHome = ({ component: Component, ...rest }) => (
   />
 );
 
-export default CheckForHome;
+export default Logged;
