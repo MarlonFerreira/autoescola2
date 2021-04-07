@@ -76,7 +76,7 @@ const Login = () => {
               onChange={handleChange}
             />
           </label>
-          {ativo && !dados.nome && (
+          {ativo && !dados.usuario && (
             <MsgInputCheck>Campo obrigatório.</MsgInputCheck>
           )}
           <label>

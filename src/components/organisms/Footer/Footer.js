@@ -14,7 +14,8 @@ import {
 
 const Root = styled.footer`
   /* display: flex; */
-  background-color: #2a2a2a;
+  /* background-color: #2a2a2a; */
+  background-color: #131921;
   color: #aaa;
   padding: 40px 0;
 

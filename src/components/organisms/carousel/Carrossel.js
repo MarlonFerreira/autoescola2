@@ -6,13 +6,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 
 const Root = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  width: 100%;
+`;
 
-  color: #fff;
-  /* padding: 100px 0; */
-  height: auto;
+const Container = styled.div`
+  height: 250px;
+`;
+
+const Image = styled.img`
+  height: 100%;
 `;
 
 const Carrossel = ({ number, imagens }) => {
@@ -22,18 +24,20 @@ const Carrossel = ({ number, imagens }) => {
         <Carousel
           infiniteLoop={true}
           showThumbs={false}
-          centerMode
+          // centerMode
           centerSlidePercentage={number}
           autoPlay={true}
           transitionTime={500}
           interval={10000}
+          width={"100%"}
+          dynamicHeight={false}
           statusFormatter={(current, total) => ``}
         >
           {imagens.map((imagem) => (
-            <div key={imagem.id}>
-              <img src={imagem.imagem} alt={imagem.legenda} />
-              <p className="legend">{imagem.legenda}</p>
-            </div>
+            <Container key={imagem.id}>
+              <Image src={imagem.imagem} alt={imagem.legenda} />
+              {/* <p className="legend">{imagem.legenda}</p> */}
+            </Container>
           ))}
         </Carousel>
       </Root>

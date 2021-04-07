@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "test-utils";
 
-import Header from "./Header";
+import Header from "./HeaderTop";
 
 const opcoes = [
   { id: 1, nome: "Serviços", slang: "servicos" },

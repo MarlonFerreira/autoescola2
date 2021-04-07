@@ -1,7 +1,9 @@
 import React from "react";
 
 import Hero from "components/molecules/hero/Hero";
+import HeaderTop from "components/organisms/Header/HeaderTop";
 import Header from "components/organisms/Header/Header";
+
 import Carrossel from "components/organisms/carousel/Carrossel";
 import Section from "components/molecules/Section";
 import Footer from "components/organisms/Footer/Footer";
@@ -24,15 +26,11 @@ const imagensCarrosel = [
   { id: 3, imagem: image3, legenda: "Imagem 3" },
 ];
 
-const headerMenu = [
-  { id: 1, nome: "Serviços", slang: "servicos" },
-  { id: 2, nome: "Contato", slang: "contato" },
-  { id: 3, nome: "Entrar", slang: "login" },
-];
-
 const Home = () => (
   <>
-    <Header logo={<Logo />} opcoes={headerMenu} />
+    <HeaderTop logo={<Logo />} />
+    <Header />
+
     <Hero image={BgHighwayImage}></Hero>
     <Section>
       <Grid sm={2} md={4}>

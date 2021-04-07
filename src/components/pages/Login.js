@@ -1,6 +1,6 @@
 import React from "react";
 
-import Header from "components/organisms/Header/Header";
+import Header from "components/organisms/Header/HeaderTop";
 import Section from "components/molecules/Section";
 import Footer from "components/organisms/Footer/Footer";
 import Login from "components/organisms/form/Login";
